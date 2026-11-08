@@ -38,6 +38,26 @@ describe("formatDuration", () => {
   it("affiche une heure pleine sans minutes", () => {
     expect(formatDuration(60)).toBe("1 h");
   });
+    it("renvoie une liste vide quand il n'y a aucun cours", () => {
+    expect(filterCours([], { query: "docker", level: "avance" })).toEqual([]);
+  });
+
+  it("combine la recherche et le niveau", () => {
+    const resultat = filterCours(COURS, { query: "git", level: "debutant" });
+    expect(resultat.map((c) => c.documentId)).toEqual(["d"]);
+  });
+
+
+
+  it("renvoie une liste vide quand il n'y a aucun cours", () => {
+    expect(filterCours([], { query: "docker", level: "avance" })).toEqual([]);
+  });
+
+  it("combine la recherche et le niveau", () => {
+    const resultat = filterCours(COURS, { query: "git", level: "debutant" });
+    expect(resultat.map((c) => c.documentId)).toEqual(["d"]);
+  });
+
 });
 
 describe("filterCours", () => {
