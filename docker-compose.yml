@@ -76,6 +76,7 @@ services:
     environment:
       # Appel serveur à serveur : on utilise le nom du service, pas "localhost"
       STRAPI_URL: http://strapi:1337
+      STRAPI_CLIENT_PASSWORD: ${STRAPI_CLIENT_PASSWORD}
     ports:
       - "${FRONTEND_PORT:-3000}:3000"
     depends_on:
@@ -140,6 +141,7 @@ services:
     environment:
       # Évite l'arrêt d'Elasticsearch sur les machines où vm.max_map_count est trop bas
       SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+      
     volumes:
       - sonar-data:/opt/sonarqube/data
       - sonar-extensions:/opt/sonarqube/extensions
@@ -172,3 +174,4 @@ volumes:
   sonar-data:
   sonar-extensions:
   sonar-logs:
+
